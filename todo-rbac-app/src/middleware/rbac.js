@@ -19,7 +19,11 @@ function checkPermission(action){
       return next();
     }
 
-    if (action === "create" || action === "read_all"){
+    if (action === "read_all"){
+      return res.status(403).json({ error: "Forbidden: Only admins can fetch all todos" });
+    }
+
+    if (action === "create"){
       return next();
     }
 
